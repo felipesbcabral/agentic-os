@@ -1,0 +1,22 @@
+{
+  "id": "BR-<AREA>-<TOPICO>-<NNN>",
+  "title": "<titulo curto da regra de negocio>",
+  "severity": "critical | high | normal",
+  "status": "active | proposed",
+  "triggers": ["<palavra-chave que roteia esta regra pra uma tarefa>", "<sinonimo>"],
+  "mustNot": [
+    "<proibicao explicita — vira zona proibida do loop>"
+  ],
+  "doesNotApplyWhen": [
+    "<escopo negativo — quando esta regra NAO se aplica (limite anti goal-drift)>"
+  ],
+  "requiredCases": [
+    "<caso de teste minimo 1>",
+    "<caso NEGATIVO: provar que o vizinho nao mudou>"
+  ],
+  "testMarker": "BusinessRule=<ID> (trait/tag na classe de teste que prova esta regra)",
+  "links": {
+    "doc": "BR-<AREA>-<TOPICO>-<NNN>.md",
+    "incidents": []
+  }
+}
