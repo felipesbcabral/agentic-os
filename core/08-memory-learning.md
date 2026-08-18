@@ -46,6 +46,37 @@ Nao salve o que so importa pra conversa atual. Memoria recall e observacao datad
 estado vivo: se cita arquivo/flag, verifique que ainda existe antes de recomendar.
 Duplicata: atualize o arquivo existente em vez de criar outro; memoria errada se deleta.
 
+Checklist negativa (do ai-memory/Akita — cada item endurece em erro futuro se gravado):
+- Falha transitoria ja resolvida → grave o PADRAO de diagnostico, nunca a falha.
+- Claim negativo amplo ("ferramenta X quebrada") → vira recusa permanente; grave a
+  condicao exata que falhou.
+- Narrativa one-off sem regra reusavel.
+- Status de trabalho em andamento → e state file/handoff, nao memoria.
+- Setup transitorio (binario faltando, env quebrado) → vira constraint falsa e stale.
+
+## Ciclo de vida (a memoria que nao apodrece)
+
+Frontmatter opcional que transforma poda em decisao mecanica:
+- `pinned: true` — imune a poda (identidade, invariante). So e questionavel sob
+  contradicao DIRETA citada.
+- `expires_at: YYYY-MM-DD` — TTL explicito; vence ATE pinned. Use em toda memoria de
+  estado cujo valor morre com o evento (followup com prazo, "aguardando resposta").
+- `superseded_by: <name>` — memoria que mudou de verdade nao se edita destrutivamente;
+  a nova nasce e a velha guarda o rastro.
+
+Tiers: estado de trabalho = episodico (decai, TTL bem-vindo); feedback/procedimento =
+procedural (nao decai, so supersede); identidade = pinned. Precedencia dura: memoria
+recuperada e evidencia historica; build/teste rodando agora e a palavra final — pagina
+de memoria nunca sobrepoe output operacional.
+
+## Handoff entre harnesses (Claude → Codex → qualquer)
+
+Fim de sessao com trabalho aberto: escreva um handoff single-use (template em
+`../bootstrap/templates/handoff.template.md`): resumo, questoes abertas, arquivos
+tocados, proximos passos. Regras: handoff manual VENCE o automatico; aceitar consome
+(o proximo nao vive de handoff velho); escopo por diretorio. E o substituto barato de
+memoria compartilhada entre IAs — qualquer harness le markdown.
+
 ## Consolidacao ("dreaming")
 
 Periodicamente (mensal funciona), um passe read-only revisa a memoria inteira: funde
@@ -53,3 +84,13 @@ duplicatas, arquiva resolvido, detecta contradicao entre notas, PROPOE poda — 
 aprova. Memoria que so cresce vira ruido; memoria consolidada vira compressao real de
 experiencia. Auditoria de uso (quantos artefatos foram de fato invocados nas ultimas N
 sessoes) e o instrumento de poda do resto do sistema.
+
+Disciplina do passe (aprendida do ai-memory/Akita):
+- **Lint mecanico primeiro**: frontmatter valido, TTL vencido, orfa sem linha no indice
+  — o que e mecanico nao gasta julgamento.
+- **Toda proposta com evidencia citavel** (quote da memoria + fonte verificada) e cap
+  por rodada (ex.: 15 ranqueadas; o resto e fila). Confianca baixa nao propoe.
+- **Rejection buffer**: proposta rejeitada pelo humano fica registrada (1 linha: data,
+  proposta, motivo) e nao volta sem evidencia NOVA. Sem isso o passe re-propoe a mesma
+  coisa toda rodada e queima a paciencia do aprovador.
+- **Historia nunca some sem rastro**: fusao/archive/superseded, nunca delecao cega.

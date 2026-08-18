@@ -37,6 +37,7 @@ opiniao sem lastro; e nada aqui foi engolido sem verificacao (ver as flags).
 | Fonte | O que deu |
 |---|---|
 | obra/superpowers (github.com/obra/superpowers) | Brainstorm antes de plano; plano executavel por "junior entusiasmado sem contexto"; TDD red/green como disciplina de execucao; subagent-driven development → `core/06` |
+| akitaonrails/ai-memory (estudo 2026-08-17) | Lifecycle de memoria (pinned / expires_at com TTL vencendo pin / supersession), checklist negativa de admissao, handoff cross-harness tipado (summary/open_questions/files_touched/next_steps, manual vence automatico), rejection buffer + caps no passe de consolidacao, eval gate deterministico pra memoria de regra, "memoria nunca sobrepoe build/teste" → `core/08` e `bootstrap/templates/handoff.template.md`. Prior-art notes do repo documentam falhas de agentmemory/basic-memory/cognee/mempalace |
 | Matt Pocock — "writing great skills" (mattpocock/skills) | Qualidade de skill: predictability, information hierarchy, progressive disclosure, failure modes (premature-completion, duplication, sediment, sprawl) |
 | Paweł Huryn / Bilal Bakr — regras de execucao (2026-08) | "Feito significa feito", "pergunta e pergunta", "aja, nao peca permissao" → `core/02` |
 | Karpathy — surface assumptions | Premissas explicitas antes de executar pedido ambiguo → `core/01` |
