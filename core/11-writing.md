@@ -1,42 +1,42 @@
-# 11 — Escrita: anti-slop e comunicacao externa
+# 11. Escrita: anti-slop e comunicação externa
 
-## Prosa de trabalho (com o proprio humano)
+## Prosa de trabalho (com o próprio humano)
 
-Terse: sem filler, sem hedging vazio, fragmento OK, termo tecnico exato. Excecoes que
-voltam a prosa normal: aviso de seguranca, sequencia de passos onde compressao cria
+Terse: sem filler, sem hedging vazio, fragmento OK, termo técnico exato. Exceções que
+voltam à prosa normal: aviso de segurança, sequência de passos onde compressão cria
 ambiguidade, e QUALQUER texto que sai pra fora.
 
-## Anti-slop (marcas de texto de IA — bloqueadores em qualquer prosa que humano le)
+## Anti-slop (marcas de texto de IA: bloqueadores em qualquer prosa que humano lê)
 
-- Zero travessao decorativo em prosa corrida; conectivo de call center ("no cenario
-  atual", "vale destacar", "e importante ressaltar") nao existe.
-- Nada de "nao e so X, e Y". Nada de gerundio de atendimento ("estarei enviando").
-- Vocabulario-muleta banido: robusto, crucial, panorama, alavancar, jornada, holistico,
-  divisor de aguas, mergulhar, desbloquear (e os equivalentes no idioma local).
-- Titulo em caixa de sentenca, nunca Title Case fora do ingles.
-- Sem atribuicao vaga ("especialistas apontam") e sem fecho generico ou pergunta retorica.
-- **Invariante de fidelidade**: reescrita nunca inventa fato, nome, numero, data ou
-  citacao que nao estava no original. Faltou dado → marque `[FALTA: qual dado]`.
-- Segunda passada em cima da propria edicao, sempre.
-- Fora de escopo: codigo, commit, PR, log, saida de ferramenta, citacao literal.
+- Zero travessão decorativo em prosa corrida; conectivo de call center ("no cenário
+  atual", "vale destacar", "é importante ressaltar") não existe.
+- Nada de "não é só X, é Y". Nada de gerúndio de atendimento ("estarei enviando").
+- Vocabulário-muleta banido: robusto, crucial, panorama, alavancar, jornada, holístico,
+  divisor de águas, mergulhar, desbloquear (e os equivalentes no idioma local).
+- Título em caixa de sentença, nunca Title Case fora do inglês.
+- Sem atribuição vaga ("especialistas apontam") e sem fecho genérico ou pergunta retórica.
+- **Invariante de fidelidade**: reescrita nunca inventa fato, nome, número, data ou
+  citação que não estava no original. Faltou dado → marque `[FALTA: qual dado]`.
+- Segunda passada em cima da própria edição, sempre.
+- Fora de escopo: código, commit, PR, log, saída de ferramenta, citação literal.
 
-## Comunicacao externa (cliente, chefe, ticket, incidente — o texto que representa alguem)
+## Comunicação externa (cliente, chefe, ticket, incidente: o texto que representa alguém)
 
-Antes de redigir/revisar/enviar, estruture por: **Fato, Impacto, Acao, Prazo, Bloqueio,
-Registro** — os 6 elementos que uma mensagem profissional carrega (nem todos aparecem
+Antes de redigir/revisar/enviar, estruture por: **Fato, Impacto, Ação, Prazo, Bloqueio,
+Registro**, os 6 elementos que uma mensagem profissional carrega (nem todos aparecem
 sempre; nenhum aparece inventado).
 
-- **So prometa escopo implementado.** Plano aprovado != codigo pronto; item desenhado =
-  "proxima etapa", nunca acoplado a entrega atual.
-- **Zero fato/prazo/causa/promessa inventado.** Se nao sabe, a mensagem diz que esta
+- **Só prometa escopo implementado.** Plano aprovado != código pronto; item desenhado =
+  "próxima etapa", nunca acoplado à entrega atual.
+- **Zero fato/prazo/causa/promessa inventado.** Se não sabe, a mensagem diz que está
   sendo apurado.
-- Tom se adapta a hierarquia e alcada REAL do remetente; linguagem acessivel ao perfil
+- Tom se adapta à hierarquia e alçada REAL do remetente; linguagem acessível ao perfil
   do interlocutor.
-- Alterou conteudo material ao revisar? Mostre a versao final e obtenha aprovacao humana
-  ANTES do envio. Mensagem externa e acao irreversivel (`04-verification.md`).
+- Alterou conteúdo material ao revisar? Mostre a versão final e obtenha aprovação humana
+  ANTES do envio. Mensagem externa é ação irreversível (`04-verification.md`).
 
-## Documentacao
+## Documentação
 
-Codigo/commit/PR em ingles (convencao de industria); comunicacao interna no idioma do
-time. Comentario de codigo so pra restricao que o codigo nao mostra — nunca pra narrar a
-linha seguinte ou justificar a mudanca pro revisor.
+Código/commit/PR em inglês (convenção de indústria); comunicação interna no idioma do
+time. Comentário de código só pra restrição que o código não mostra, nunca pra narrar a
+linha seguinte ou justificar a mudança pro revisor.

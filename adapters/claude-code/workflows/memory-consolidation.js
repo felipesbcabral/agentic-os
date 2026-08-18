@@ -1,17 +1,17 @@
 export const meta = {
   name: 'memory-consolidation',
-  description: 'Dreaming auditavel da memoria persistente: acha duplicatas/conflitos/stale, verifica contra fontes, PROPOE mudancas - nunca muta nada sozinho',
-  whenToUse: 'Consolidacao periodica (mensal) da memoria de um projeto. args: { memoryDir?: "path do dir de memoria (default: memoria do projeto atual)" }',
+  description: 'Dreaming auditável da memória persistente: acha duplicatas/conflitos/stale, verifica contra fontes, PROPÕE mudanças - nunca muta nada sozinho',
+  whenToUse: 'Consolidação periódica (mensal) da memória de um projeto. args: { memoryDir?: "path do dir de memória (default: memória do projeto atual)" }',
   phases: [
-    { title: 'Inventory', detail: 'ler indice + achar candidatos' },
+    { title: 'Inventory', detail: 'ler índice + achar candidatos' },
     { title: 'Verify', detail: 'checar candidato contra fontes' },
-    { title: 'Proposals', detail: 'relatorio para aprovacao humana' },
+    { title: 'Proposals', detail: 'relatório para aprovação humana' },
   ],
 }
 
 // runtime pode entregar args como string JSON - normaliza antes de usar
 const A = (typeof args === 'string') ? JSON.parse(args) : (args || {})
-const MEM_HINT = A.memoryDir ? 'Diretorio de memoria: ' + A.memoryDir : 'Use o diretorio de memoria do projeto atual (MEMORY.md + arquivos .md irmaos).'
+const MEM_HINT = A.memoryDir ? 'Diretório de memória: ' + A.memoryDir : 'Use o diretório de memória do projeto atual (MEMORY.md + arquivos .md irmãos).'
 const CAP_CANDIDATES = 15
 
 const CANDIDATES = {
@@ -46,42 +46,42 @@ const VERDICT = {
 
 phase('Inventory')
 const inv = await agent(
-  'Inventario READ-ONLY da memoria persistente. ' + MEM_HINT + '\n' +
-  'Leia o MEMORY.md (indice) e liste os arquivos de memoria. Ache candidatos a consolidacao:\n' +
-  '- duplicata: 2+ memorias cobrindo o mesmo fato/licao (nomes ou descricoes muito proximos);\n' +
-  '- stale: memoria sobre trabalho ja concluido/mergeado ha muito tempo, sem valor futuro, ou que referencia ' +
-  'arquivo/flag/PR que nao existe mais (verifique 1-2 referencias antes de acusar);\n' +
-  '- conflito: 2 memorias que se contradizem;\n' +
-  '- promover: licao de projeto repetida que merece virar regra global (raro - so com evidencia repetida).\n' +
-  'NAO modifique nenhum arquivo. Liste no maximo ' + (CAP_CANDIDATES + 5) + ' candidatos, mais fortes primeiro.',
+  'Inventário READ-ONLY da memória persistente. ' + MEM_HINT + '\n' +
+  'Leia o MEMORY.md (índice) e liste os arquivos de memória. Ache candidatos a consolidação:\n' +
+  '- duplicata: 2+ memórias cobrindo o mesmo fato/lição (nomes ou descrições muito próximos);\n' +
+  '- stale: memória sobre trabalho já concluído/mergeado há muito tempo, sem valor futuro, ou que referencia ' +
+  'arquivo/flag/PR que não existe mais (verifique 1-2 referências antes de acusar);\n' +
+  '- conflito: 2 memórias que se contradizem;\n' +
+  '- promover: lição de projeto repetida que merece virar regra global (raro - só com evidência repetida).\n' +
+  'NÃO modifique nenhum arquivo. Liste no máximo ' + (CAP_CANDIDATES + 5) + ' candidatos, mais fortes primeiro.',
   { label: 'inventory', phase: 'Inventory', schema: CANDIDATES },
 )
-if (!inv || inv.candidates.length === 0) return { proposals: [], report: 'Nenhum candidato a consolidacao encontrado em ' + (inv ? inv.totalMemories : 0) + ' memorias.' }
+if (!inv || inv.candidates.length === 0) return { proposals: [], report: 'Nenhum candidato a consolidação encontrado em ' + (inv ? inv.totalMemories : 0) + ' memórias.' }
 const cands = inv.candidates.slice(0, CAP_CANDIDATES)
 if (inv.candidates.length > CAP_CANDIDATES) log('DROPADOS ' + (inv.candidates.length - CAP_CANDIDATES) + ' candidatos pelo cap de ' + CAP_CANDIDATES)
-log(inv.totalMemories + ' memorias, ' + cands.length + ' candidatos a verificar')
+log(inv.totalMemories + ' memórias, ' + cands.length + ' candidatos a verificar')
 
 phase('Verify')
 const verified = (await parallel(cands.map((c, i) => () =>
   agent(
-    'Verifique READ-ONLY este candidato a consolidacao de memoria:\n' + JSON.stringify(c) + '\n' +
-    'Leia os arquivos de memoria citados INTEIROS e cheque a alegacao contra as fontes (codigo, git log, arquivos ' +
-    'referenciados). confirmed=true so com evidencia concreta. proposedAction = acao especifica e reversivel ' +
+    'Verifique READ-ONLY este candidato a consolidação de memória:\n' + JSON.stringify(c) + '\n' +
+    'Leia os arquivos de memória citados INTEIROS e cheque a alegação contra as fontes (código, git log, arquivos ' +
+    'referenciados). confirmed=true só com evidência concreta. proposedAction = ação específica e reversível ' +
     '(ex: "fundir B dentro de A e apagar B", "marcar como resolvido e mover para archive", "atualizar linha X"). ' +
-    'Historia NUNCA e deletada sem rastro - toda proposta preserva o conteudo em archive ou merge. NAO execute nada.',
+    'História NUNCA é deletada sem rastro - toda proposta preserva o conteúdo em archive ou merge. NÃO execute nada.',
     { label: 'verify:' + (i + 1), phase: 'Verify', schema: VERDICT, effort: 'low' },
   ).then((v) => (v ? { ...c, ...v } : null))))).filter(Boolean)
 
 const confirmed = verified.filter((v) => v.confirmed)
 log(confirmed.length + ' de ' + verified.length + ' candidatos confirmados')
 
-// relatorio = plumbing -> codigo (sem agente final sem schema; propostas ja estruturadas)
+// relatório = plumbing -> código (sem agente final sem schema; propostas já estruturadas)
 phase('Proposals')
 const byKind = {}
 for (const p of confirmed) (byKind[p.kind] = byKind[p.kind] || []).push(p)
 const sections = Object.keys(byKind).map((k) => k.toUpperCase() + ':\n' +
-  byKind[k].map((p) => '- ' + p.files.join(', ') + '\n  motivo: ' + p.reason + '\n  acao proposta: ' + p.proposedAction + '\n  evidencia: ' + p.evidence).join('\n'))
-const report = 'Consolidacao de memoria (dreaming) - ' + confirmed.length + ' propostas para APROVACAO HUMANA (nada modificado).\n' +
+  byKind[k].map((p) => '- ' + p.files.join(', ') + '\n  motivo: ' + p.reason + '\n  ação proposta: ' + p.proposedAction + '\n  evidência: ' + p.evidence).join('\n'))
+const report = 'Consolidação de memória (dreaming) - ' + confirmed.length + ' propostas para APROVAÇÃO HUMANA (nada modificado).\n' +
   (confirmed.length ? sections.join('\n\n') : 'Nenhuma proposta confirmada.') +
-  '\n\nToda acao e reversivel (fusao/archive, nunca delecao sem rastro). Aprove em bloco ou item a item.'
+  '\n\nToda ação é reversível (fusão/archive, nunca deleção sem rastro). Aprove em bloco ou item a item.'
 return { totalMemories: inv.totalMemories, proposals: confirmed, report }

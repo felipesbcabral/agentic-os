@@ -1,25 +1,25 @@
-# Loop state -- <projeto> / <slug da tarefa>
+# Loop state: <projeto> / <slug da tarefa>
 
-> Memoria que sobrevive entre voltas do /gloop. O agente esquece, o arquivo nao.
-> Copia este template pra ./.loop/state-<slug>.md. Atualiza ao fim de CADA iteracao.
+> Memória que sobrevive entre voltas do /gloop. O agente esquece, o arquivo não.
+> Copia este template pra ./.loop/state-<slug>.md. Atualiza ao fim de CADA iteração.
 
 ## Goal / Spec
 <!-- Onde o loop quer chegar. Setado por `/gloop <tarefa>`. Reler toda volta. -->
-(vazio -- rode `/gloop <descricao da tarefa>`)
+(vazio; rode `/gloop <descricao da tarefa>`)
 
-## Gate (comandos ABSOLUTOS ja verificados -- baseline verde antes de mexer)
+## Gate (comandos ABSOLUTOS já verificados: baseline verde antes de mexer)
 <!-- Auto-detectado por stack (ver skill loop-global). Caminho absoluto do repo. -->
 - build: `<comando build absoluto>`
 - test:  `<comando test absoluto, alvo estreito>`
 - lint:  `<comando lint/type, se houver>`
 
-## Classificacao
+## Classificação
 - TYPE: (bug | feature | refactor | chore)
-- RISCO DE ZONA: (nenhum | ALTO -- auth/payments/migration/secrets/snapshot/CFG)
+- RISCO DE ZONA: (nenhum | ALTO: auth/payments/migration/secrets/snapshot/CFG)
 
 ## Step 0 (1x)
 - [ ] gate detectado e baseline verde confirmado
-- [ ] zone scan feito; decisoes de humano resolvidas (se houver)
+- [ ] zone scan feito; decisões de humano resolvidas (se houver)
 
 ## Last run
 (nenhuma ainda)
@@ -33,7 +33,7 @@
 ## Escalated to human (zona proibida / judgment-call)
 - (nada)
 
-## Lessons learned (escreve aqui, nao no chat)
+## Lessons learned (escreve aqui, não no chat)
 - (nada)
 
 ## Stop conditions atingidas

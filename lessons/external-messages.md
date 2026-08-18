@@ -1,15 +1,15 @@
-# Mensagem externa: so prometa escopo implementado
+# Mensagem externa: só prometa escopo implementado
 
-Casos reais: quase-envio de mensagem prometendo item que so existia em plano aprovado
-(nao em codigo); resumo de status que "melhorou" fatos ao reescrever.
+Casos reais: quase-envio de mensagem prometendo item que só existia em plano aprovado
+(não em código); resumo de status que "melhorou" fatos ao reescrever.
 
-**Why:** pra quem recebe, promessa e compromisso com data. Plano aprovado != codigo
-pronto != deployado. E reescrita "pra ficar melhor" que altera fato/prazo/causa e
-fabricacao, nao estilo.
+**Why:** pra quem recebe, promessa é compromisso com data. Plano aprovado != código
+pronto != deployado. E reescrita "pra ficar melhor" que altera fato/prazo/causa é
+fabricação, não estilo.
 
-**How to apply:** (1) mensagem externa lista apenas o que esta IMPLEMENTADO e verificado;
-item desenhado = "proxima etapa", nunca acoplado a entrega atual; (2) estruture por Fato,
-Impacto, Acao, Prazo — nenhum deles inventado; (3) reescrita preserva todo fato, numero,
-data e compromisso do original (faltou dado = perguntar, nao completar); (4) alteracao
-material na revisao = mostrar versao final e obter aprovacao humana ANTES do envio;
-(5) estimativa tecnica interna nao vira prazo prometido sem decisao humana.
+**How to apply:** (1) mensagem externa lista apenas o que está IMPLEMENTADO e verificado;
+item desenhado = "próxima etapa", nunca acoplado à entrega atual; (2) estruture por Fato,
+Impacto, Ação e Prazo; nenhum deles inventado; (3) reescrita preserva todo fato, número,
+data e compromisso do original (faltou dado = perguntar, não completar); (4) alteração
+material na revisão = mostrar versão final e obter aprovação humana ANTES do envio;
+(5) estimativa técnica interna não vira prazo prometido sem decisão humana.

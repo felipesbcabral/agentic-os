@@ -1,25 +1,25 @@
-# Loop state — <slug da tarefa>
+# Loop state. <slug da tarefa>
 
 ## Goal
 <o objetivo, em 1-3 linhas. Se um state existente tiver Goal diferente: PARE e pergunte.>
 
-## Gate (comandos ABSOLUTOS, validados — reuse toda volta, nao re-derive)
+## Gate (comandos ABSOLUTOS, validados: reuse toda volta, não re-derive)
 ```
 <comando 1>
 <comando 2>
 ```
 
 ## Feito
-- <iteracao N: o que fechou, com prova>
+- <iteração N: o que fechou, com prova>
 
 ## Em progresso / falta
-- <proximo menor passo>
+- <próximo menor passo>
 
 ## Perguntas abertas (humano)
-- <decisao pendente + recomendacao>
+- <decisão pendente + recomendação>
 
-## Licoes desta tarefa
-- <gatilho -> acao>
+## Lições desta tarefa
+- <gatilho -> ação>
 
-## Stop conditions ja definidas
-- Max iteracoes: 5 · Sem progresso: 2 seguidas · Teto de custo: <definir ANTES>
+## Stop conditions já definidas
+- Máx iterações: 5 · Sem progresso: 2 seguidas · Teto de custo: <definir ANTES>

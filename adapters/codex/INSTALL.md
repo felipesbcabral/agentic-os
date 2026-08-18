@@ -1,7 +1,7 @@
-# Instalacao — Codex
+# Instalação. Codex
 
 O menu `/` do app Codex lista SKILLS (`~/.codex/skills/`); prompts (`~/.codex/prompts/`)
-sao a via alternativa por CLI. Instale como skill para aparecer no picker.
+são a via alternativa por CLI. Instale como skill para aparecer no picker.
 
 ```bash
 # a partir da raiz deste repo
@@ -13,22 +13,22 @@ cp prompts/agentic-plan-loop.SKILL.md ~/.codex/skills/agentic-plan-loop/SKILL.md
 E no `~/.codex/AGENTS.md`, o kernel:
 
 ```markdown
-Metodo: agentic-os (<caminho-do-repo>) — core/00-manifesto.md sob demanda.
-Checker: como o Codex nao tem subagentes, maker != checker = passe adversarial proprio
-em turno separado, com o plano/diff CONGELADO durante a revisao.
-Learning law: solve nao-trivial fecha com nota extract-approach.
+Método: agentic-os (<caminho-do-repo>): core/00-manifesto.md sob demanda.
+Checker: como o Codex não tem subagentes, maker != checker = passe adversarial próprio
+em turno separado, com o plano/diff CONGELADO durante a revisão.
+Learning law: solve não-trivial fecha com nota extract-approach.
 ```
 
-## Padrao de wrapper (skill fina apontando pro canonico)
+## Padrão de wrapper (skill fina apontando pro canônico)
 
-A skill NAO duplica o protocolo — le o arquivo canonico do repo e executa. Um so lugar
-pra manter; Claude e Codex herdam juntos a mesma correcao. Ver os dois wrappers em
+A skill NÃO duplica o protocolo: lê o arquivo canônico do repo e executa. Um só lugar
+pra manter; Claude e Codex herdam juntos a mesma correção. Ver os dois wrappers em
 `prompts/`.
 
-## Diferencas operacionais vs Claude Code
+## Diferenças operacionais vs Claude Code
 
-- Sem Agent tool → checker vira passe proprio em turno separado (nunca no mesmo turno
+- Sem Agent tool → checker vira passe próprio em turno separado (nunca no mesmo turno
   que escreveu).
-- Sem Workflow tool → grafos executam "manualmente": voce abre N sessoes/threads pelas
-  pecas independentes e faz o merge; o DESENHO continua o de `core/07`.
+- Sem Workflow tool → grafos executam "manualmente": você abre N sessões/threads pelas
+  peças independentes e faz o merge; o DESENHO continua o de `core/07`.
 - Perguntas ao humano em texto plano, todas numa rodada.

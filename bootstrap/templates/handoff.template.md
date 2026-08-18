@@ -1,31 +1,31 @@
-# Handoff — <projeto>: <resumo em 5 palavras>
+# Handoff. <projeto>: <resumo em 5 palavras>
 
 <!-- Single-use: quem aceita, consome (apaga ou marca aceito). Handoff manual vence
-     qualquer resumo automatico. Escreva pra um agente FRIO de outro harness. -->
+     qualquer resumo automático. Escreva pra um agente FRIO de outro harness. -->
 
-- **from**: <harness/modelo que escreveu> · **para**: <proximo, ou "qualquer">
-- **cwd**: <diretorio do trabalho>
+- **from**: <harness/modelo que escreveu> · **para**: <próximo, ou "qualquer">
+- **cwd**: <diretório do trabalho>
 - **criado**: <YYYY-MM-DD HH:MM>
 
 ## Onde paramos (resumo)
 
-<2-5 linhas: o que foi feito e VERIFICADO (prova colada, nao prometida), o que ficou
+<2-5 linhas: o que foi feito e VERIFICADO (prova colada, não prometida), o que ficou
 pela metade e em que estado exato.>
 
-## Questoes abertas
+## Questões abertas
 
-- <decisao pendente de humano, com as opcoes e a recomendacao>
-- <duvida tecnica nao resolvida, com o que ja foi descartado>
+- <decisão pendente de humano, com as opções e a recomendação>
+- <dúvida técnica não resolvida, com o que já foi descartado>
 
 ## Arquivos tocados
 
-- `path/arquivo` — <estado: editado/criado/so lido; committed ou nao>
+- `path/arquivo`: <estado: editado/criado/só lido; committed ou não>
 
-## Proximos passos (em ordem)
+## Próximos passos (em ordem)
 
-1. <menor proximo passo acionavel, com comando exato se houver>
+1. <menor próximo passo acionável, com comando exato se houver>
 2. <...>
 
-## Armadilhas pro proximo
+## Armadilhas pro próximo
 
-- <gotcha pago nesta sessao que o proximo NAO deve re-pagar>
+- <gotcha pago nesta sessão que o próximo NÃO deve re-pagar>

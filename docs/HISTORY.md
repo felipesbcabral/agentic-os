@@ -1,55 +1,55 @@
-# HISTORY — como este sistema foi construido (linha do tempo real)
+# HISTORY. Como este sistema foi construído (linha do tempo real)
 
-Registro honesto: o sistema nao nasceu desenhado; foi destilado de trabalho de producao,
+Registro honesto: o sistema não nasceu desenhado; foi destilado de trabalho de produção,
 uma dor por vez. Datas de 2026.
 
-## Fev-Jun — fundacao
+## Fev-Jun. Fundação
 
-- Regras de projeto (root cause obrigatorio, TDD, zonas write-once) nascem de bugs
+- Regras de projeto (root cause obrigatório, TDD, zonas write-once) nascem de bugs
   reais e viram texto versionado.
-- Vault de conhecimento (Obsidian) + memoria por projeto com indice — a primeira vez
-  que uma sessao herdou o metodo da anterior.
-- Skills de dominio e workflow universal de task.
+- Vault de conhecimento (Obsidian) + memória por projeto com índice, a primeira vez
+  que uma sessão herdou o método da anterior.
+- Skills de domínio e workflow universal de task.
 
-## 06-07/jul — a grande auditoria (a virada de "colecao" pra "sistema")
+## 06-07/jul. A grande auditoria (a virada de "coleção" pra "sistema")
 
-- Meta-auditoria completa do stack de instrucoes: 9 conflitos entre camadas achados e
-  RESOLVIDOS em tabela de precedencia (`core/03` e o neto disso).
-- JUDGMENT destilado como protese de julgamento pra modelo menor operar como o maior.
-- Kernel enxugado ~49% (token economy): nasce a regra "indice aponta, nao contem".
+- Meta-auditoria completa do stack de instruções: 9 conflitos entre camadas achados e
+  RESOLVIDOS em tabela de precedência (`core/03` é o neto disso).
+- JUDGMENT destilado como prótese de julgamento pra modelo menor operar como o maior.
+- Kernel enxugado ~49% (token economy): nasce a regra "índice aponta, não contém".
 - Validado: executor menor + documento brilhante >= executor brilhante sem documento.
-- MODEL-ROUTING v2 com benchmarks publicos (advisor 92%@63%, orchestrator 96%@46%).
+- MODEL-ROUTING v2 com benchmarks públicos (advisor 92%@63%, orchestrator 96%@46%).
 
-## 23-24/jul — graph engineering em 48h
+## 23-24/jul. Graph engineering em 48h
 
-- Estudo completo da onda: playbook KG (12 pag.), serie de artigos no X, palestra Lance
+- Estudo completo da onda: playbook KG (12 pág.), série de artigos no X, palestra Lance
   Martin, engineering blog da Anthropic (fontes e flags em `SOURCES.md`).
 - P0 executado: skill de grafo + protocolo + 5 workflows salvos (adversarial-review,
   discovery-until-dry, dependency-waves, kg-ingestion, memory-consolidation).
 - Loops e grafos integrados: BRIDGE loop→grafo (etapa que divide vira grafo e volta).
-- Auto-observabilidade: auditoria de uso de 30 sessoes + "dreaming" mensal agendado.
+- Auto-observabilidade: auditoria de uso de 30 sessões + "dreaming" mensal agendado.
 
-## 31/jul-08/ago — loop engineering em producao
+## 31/jul-08/ago. Loop engineering em produção
 
 - Loop gate-stop (find→act→gate→record→decide) roda tarefas reais; hard-stops e state
-  files calibrados por falha real (5 iteracoes, 2 sem progresso, teto de custo).
-- Corpus de regras do projeto: pack/packet/gate/verify/lint — regra de negocio roteada
+  files calibrados por falha real (5 iterações, 2 sem progresso, teto de custo).
+- Corpus de regras do projeto: pack/packet/gate/verify/lint, regra de negócio roteada
   por trigger, teste marcado por regra, gate machine-readable (`core/09`).
 
-## 17/ago — plan-loop e a licao do G5
+## 17/ago. Plan-loop e a lição do G5
 
 - Loop de PLANEJAMENTO criado (brainstorm → plano → gates → checker) e testado em tarefa
-  real no MESMO dia. Primeira execucao entregou plano violando 2 invariantes escritos em
-  prosa → nasce o G5 (assertions mecanicas no proprio plano) e a licao mais importante
-  do sistema: **invariante em prosa nao segura o modelo** (`lessons/gate-design.md`).
-- Segunda execucao: honesta ate no vermelho (gate de contrato reprovou a si mesmo por
-  falta do packet — comportamento desejado).
-- Mesmo dia: auditoria do sistema contra o artigo "Graph Engineering" (a fonte didatica
-  da serie) — ~90% ja implementado, lacunas mapeadas.
-- Este repo nasce: o sistema extraido do projeto-origem e generalizado.
+  real no MESMO dia. Primeira execução entregou plano violando 2 invariantes escritos em
+  prosa → nasce o G5 (assertions mecânicas no próprio plano) e a lição mais importante
+  do sistema: **invariante em prosa não segura o modelo** (`lessons/gate-design.md`).
+- Segunda execução: honesta até no vermelho (gate de contrato reprovou a si mesmo por
+  falta do packet, comportamento desejado).
+- Mesmo dia: auditoria do sistema contra o artigo "Graph Engineering" (a fonte didática
+  da série): ~90% já implementado, lacunas mapeadas.
+- Este repo nasce: o sistema extraído do projeto-origem e generalizado.
 
-## O padrao que a linha do tempo mostra
+## O padrão que a linha do tempo mostra
 
-Cada peca entrou DEPOIS de uma dor real, foi testada em producao no mesmo ciclo, e a
-licao virou artefato versionado (regra, gate, lesson). E o proprio metodo aplicado a si
+Cada peça entrou DEPOIS de uma dor real, foi testada em produção no mesmo ciclo, e a
+lição virou artefato versionado (regra, gate, lesson). É o próprio método aplicado a si
 mesmo: loop com gate, learning law, poda por auditoria de uso.
