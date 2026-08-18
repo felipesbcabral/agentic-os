@@ -53,3 +53,16 @@ uma dor por vez. Datas de 2026.
 Cada peça entrou DEPOIS de uma dor real, foi testada em produção no mesmo ciclo, e a
 lição virou artefato versionado (regra, gate, lesson). É o próprio método aplicado a si
 mesmo: loop com gate, learning law, poda por auditoria de uso.
+
+## 18/ago. Primeira volta do circuito de evolução
+
+- Bootstrap do agentic-os num segundo projeto real (agente desktop .NET + backend).
+  Primeira tarefa de produção: ticket de suporte com 39 falsos "firewall desabilitado".
+- O loop segurou: checker reprovou a 1ª implementação, TDD com RED provado, duas pausas
+  em zona proibida (produção read-only e regra temporária com cleanup verificado).
+- Auditoria externa do relato de processo gerou 5 melhorias no protocolo (gate provisório
+  pra área não mapeada, checker auditável, acesso temporário em passos separados,
+  evidência de baseline em arquivo, fechamento de ticket com rascunho de resposta),
+  aplicadas primeiro na instância do projeto e portadas pra cá no mesmo dia. É o circuito
+  desenhado em `core/08`: a lição nasce no projeto, vira changelog na instância e sobe
+  pro canônico quando provada.

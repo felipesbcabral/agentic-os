@@ -30,8 +30,16 @@ Toda iteração atualiza: feito / falta / lições / stop conditions.
    Cargo.toml → `cargo test`; go.mod → `go test ./...`; .csproj → `dotnet test <proj>
    --no-restore --filter <area>`; Makefile → `make test`). Honre o gate declarado no
    `AGENTS.md`/`CLAUDE.md` do projeto se houver. Rode 1x pra confirmar baseline verde.
+   Projeto com mapa de áreas (`knowledge/areas.json` ou equivalente): área tocada sem
+   entrada no mapa = pare ANTES do primeiro ACT, registre a lacuna no state e defina um
+   gate provisório com baseline completa; no fechamento, registre a área no mapa (quem
+   descobre a lacuna também a registra).
 2. **Zone scan**: a tarefa toca zona proibida (`04-verification.md`)? Se sim: NÃO comece.
    Liste TODAS as decisões humanas pendentes e pergunte em UMA rodada, com recomendação.
+3. **Evidência em arquivo**: crie `./.loop/evidence/<slug>/` e salve lá o stdout da
+   baseline (e depois o do gate final), incluindo os NOMES dos testes que falham; o state
+   referencia o caminho. Contagem resumida (ex.: 502/505) não prova que uma falha é
+   pré-existente; nome de teste prova.
 
 ## Uma iteração (find → act → gate → record → decide)
 
@@ -50,8 +58,14 @@ Toda iteração atualiza: feito / falta / lições / stop conditions.
 6. **GATE** rode build+test com caminho absoluto; cole comando + resultado.
 7. **CHECKER** (maker != checker) no diff da iteração; classifique cada alerta
    (introduzido × pré-existente). Diff de alto risco: escale pra verify adversarial.
+   O checker precisa ser AUDITÁVEL depois: registre no state a identidade/contexto dele,
+   o prompt usado, o hash do diff congelado, os achados e o veredito literal (texto longo
+   vai pra `./.loop/evidence/<slug>/` e o state referencia).
 8. **RECORD** atualize o state file.
 9. **DECIDE** gate verde + Goal atingido → HARD-STOP (sucesso). Senão próxima iteração.
+   Tarefa nascida de ticket/chamado de suporte só encerra com um rascunho de resposta ao
+   solicitante no state (SEM enviar): o que foi confirmado, o que não dá pra afirmar e o
+   que ele deve ou não fazer agora. O ciclo termina no suporte respondido, não no diff.
 
 ## HARD-STOPS (pare e mostre o diff pro humano)
 
@@ -60,6 +74,14 @@ Toda iteração atualiza: feito / falta / lições / stop conditions.
 - **Teto de token/custo estourado** (defina ANTES; sem teto = 5-10x o esperado).
 - **2 iterações seguidas sem progresso** no gate (loop falhando quieto, não insista).
 - Zona proibida sem aprovação; mudança fora de escopo; ação irreversível.
+
+## Acesso temporário autorizado (regra de firewall, credencial, porta, permissão)
+
+Quando o humano autorizar um acesso temporário a ambiente sensível: criar, usar e remover
+são passos SEPARADOS, cada um com output próprio colado. O cleanup é obrigatório e a
+pós-condição que prova a remoção (ex.: consulta devolvendo zero regras temporárias) entra
+no state. Agrupar criar-usar-remover numa chamada só esconde o cleanup do registro; foi
+assim que um loop real quase deixou uma regra de firewall órfã em produção.
 
 ## Modos de falha (battle-tested, vigie todos)
 

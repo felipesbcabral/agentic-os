@@ -52,6 +52,11 @@ implementação (teste novo que passa de primeira = desconfie do ambiente); (5) 
 o mínimo; (6) rode o gate e COLE o resultado; (7) passe checker adversarial; (8) atualize
 o state; (9) gate verde + Goal atingido = PARE e apresente. HARD-STOPS: 5 iterações; 2
 sem progresso; teto de custo; zona proibida; fora de escopo.
+Auditabilidade: guarde stdout da baseline (com os NOMES dos testes que falham) e o
+veredito literal do checker; contagem resumida não prova falha pré-existente. Acesso
+temporário autorizado (regra de firewall, credencial): criar, usar e remover em passos
+separados, cleanup com pós-condição colada. Tarefa nascida de ticket só encerra com
+rascunho de resposta ao solicitante (sem enviar).
 
 ## 5. Planejamento (antes de implementar algo não-trivial)
 

@@ -9,6 +9,10 @@
 <comando 2>
 ```
 
+## Evidência (arquivos em ./.loop/evidence/<slug>/)
+- baseline: <caminho do stdout, com nomes dos testes que falham>
+- checker: <identidade + hash do diff congelado + veredito literal (ou caminho)>
+
 ## Feito
 - <iteração N: o que fechou, com prova>
 
@@ -20,6 +24,9 @@
 
 ## Lições desta tarefa
 - <gatilho -> ação>
+
+## Rascunho de resposta ao solicitante (só se a tarefa nasceu de ticket; NÃO enviar)
+- <o que foi confirmado / o que não dá pra afirmar / o que fazer ou não fazer agora>
 
 ## Stop conditions já definidas
 - Máx iterações: 5 · Sem progresso: 2 seguidas · Teto de custo: <definir ANTES>

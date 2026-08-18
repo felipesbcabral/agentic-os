@@ -81,7 +81,13 @@ verificados e reuse-os toda volta.
 ## Step 0: setup + zone scan (1x por tarefa, ANTES de codar)
 1. **Detecte o gate** pela stack (tabela na skill `loop-global`). Honre o gate do
    `CLAUDE.md`/`AGENTS.md` do projeto se houver. Rode 1x pra confirmar que passa
-   ANTES de mexer (baseline verde) e fixe os comandos absolutos no state.
+   ANTES de mexer (baseline verde) e fixe os comandos absolutos no state. Projeto com
+   mapa de áreas (`knowledge/areas.json` ou equivalente) e área tocada fora do mapa:
+   pare ANTES do primeiro ACT, registre a lacuna no state, use gate provisório com
+   baseline completa e, no fechamento, registre a área no mapa. Salve o stdout da
+   baseline (com os NOMES dos testes que falham) em `./.loop/evidence/<slug>/` e
+   referencie no state: contagem resumida não prova falha pré-existente, nome de
+   teste prova.
 2. **Zone scan**: escaneie a tarefa pelas zonas proibidas (skill). Se bater >= 1:
    - NÃO comece a codar. Mapeie o fluxo o suficiente pra listar TODAS as decisões que
      dependem do humano.
@@ -125,8 +131,14 @@ verificados e reuse-os toda volta.
    Diff GRANDE ou de alto valor: escale o checker do 1-agente pro workflow
    `adversarial-review` (lentes distintas + céticos que tentam MATAR cada finding):
    mais confiança que uma passada única do loop-reviewer.
+   Deixe o checker AUDITÁVEL: registre no state a identidade dele, o hash do diff
+   congelado, os achados e o veredito literal (texto longo vai pra
+   `./.loop/evidence/<slug>/`, o state referencia).
 8. **RECORD** atualize `./.loop/state-<slug>.md` (feito / falta / lições / stops).
 9. **DECIDE** gate verde + Goal atingido -> HARD-STOP (sucesso). Senão próxima iteração.
+   Tarefa nascida de ticket/chamado: só encerra com rascunho de resposta ao solicitante
+   no state (SEM enviar), dizendo o que foi confirmado, o que não dá pra afirmar e o que
+   ele deve ou não fazer agora.
 
 ## HARD-STOPS (pare, mostre diff, não prossiga)
 - Gate VERDE e Goal atingido. (sucesso)
@@ -137,6 +149,9 @@ verificados e reuse-os toda volta.
 - Tarefa exige zona proibida sem aprovação (skill `loop-global`).
 - Mudança passou de **scope** (tocou arquivo que não rastreia ao Goal).
 - Ação irreversível (commit/push/merge/deploy/delete): SEMPRE humano.
+- Acesso temporário autorizado (regra de firewall, credencial, porta): criar, usar e
+  remover em passos SEPARADOS, cada um com output próprio; cleanup obrigatório com a
+  pós-condição colada no state (ex.: consulta devolvendo zero regras temporárias).
 
 ## Ao parar: nunca diga só "pronto"
 Mostre: (1) diff, (2) comando de gate exato + resultado, (3) achados do checker,
