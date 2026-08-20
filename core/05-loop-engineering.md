@@ -22,7 +22,10 @@ abaixo de ~50% de aceite o loop está perdendo.
 `./.loop/state-<slug>.md` (template em `../bootstrap/templates/loop-state.template.md`).
 SEMPRE leia primeiro. State existente com Goal DIFERENTE: não sobrescreva, pare e
 pergunte. Fixe na seção Gate os comandos ABSOLUTOS já verificados e reuse toda volta.
-Toda iteração atualiza: feito / falta / lições / stop conditions.
+Toda iteração atualiza: feito / falta / custo / checker / lições / stop conditions.
+**Local e formato são lei também pra adapters de projeto** (loops de domínio derivados
+deste protocolo): state fora de `./.loop/` fica invisível pra auditoria e pro recibo
+(`../bootstrap/receipt.mjs`). Já aconteceu, e o maior volume de trabalho ficou sem prova.
 
 ## Step 0: setup + zone scan (1x por tarefa, ANTES de codar)
 
@@ -60,8 +63,10 @@ Toda iteração atualiza: feito / falta / lições / stop conditions.
    (introduzido × pré-existente). Diff de alto risco: escale pra verify adversarial.
    O checker precisa ser AUDITÁVEL depois: registre no state a identidade/contexto dele,
    o prompt usado, o hash do diff congelado, os achados e o veredito literal (texto longo
-   vai pra `./.loop/evidence/<slug>/` e o state referencia).
-8. **RECORD** atualize o state file.
+   vai pra `./.loop/evidence/<slug>/` e o state referencia). Contexto: o checker nasce SEM
+   o histórico do maker e cada achado leva atribuição (`04-verification.md`).
+8. **RECORD** atualize o state file, incluindo modelo usado e tokens/custo da iteração.
+   Sem essa série, a métrica "custo por mudança aceita" declarada acima nunca fecha.
 9. **DECIDE** gate verde + Goal atingido → HARD-STOP (sucesso). Senão próxima iteração.
    Tarefa nascida de ticket/chamado de suporte só encerra com um rascunho de resposta ao
    solicitante no state (SEM enviar): o que foi confirmado, o que não dá pra afirmar e o

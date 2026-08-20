@@ -84,9 +84,20 @@ Modelo barato em node repetitivo/bounded (extrair, classificar, varrer); modelo 
 decomposição, síntese e verify difícil. Rota curta pra tarefa simples; grafo completo só
 pra trabalho que o merece. Detalhe: `10-model-routing.md`.
 
+## Pós-execução (gate sobre a própria máquina)
+
+Workflow concluído não é workflow confiável: confira o JOURNAL antes de usar o resultado
+(retorno não-vazio? branch que falhou virou null?). Run silenciosamente morto existe:
+journal parado em "started" = stall, relance com resume do run anterior em vez de
+reescrever na mão. Script novo: valide sintaxe (JS puro, sem TypeScript) ANTES de rodar.
+Os dois modos de falha aconteceram em produção no mesmo dia.
+
 ## Biblioteca
 
 Grafo que rodou bem = ativo reusável: salve com nome (global se agnóstico, no projeto se
 específico). Implementações de referência (runtime Claude Code) em
-`../adapters/claude-code/workflows/`. O DESENHO (fases, contratos, verify, caps) é
-portável pra qualquer runtime, inclusive "manual": você mesmo orquestrando N conversas.
+`../adapters/claude-code/workflows-experimental/`, que ficam em EXPERIMENTAL até cada uma
+ter 1 execução registrada (journal completo + resultado aceito + caso de reuso); só então
+entram na instalação padrão. Implementação sem uso não é recibo. O DESENHO (fases,
+contratos, verify, caps) é portável pra qualquer runtime, inclusive "manual": você mesmo
+orquestrando N conversas.

@@ -14,7 +14,7 @@ mensagem    memória      máquina      corrida   coordenação
 ```
 
 - **Prompt**: melhora a instrução de UMA mensagem.
-- **Context**: controla o que o modelo VÊ (regras, memória, corpus: `07-context-engineering.md`).
+- **Context**: controla o que o modelo VÊ (regras, memória, corpus: `09-context-engineering.md`).
 - **Harness**: o ambiente em volta (hooks, gates, permissões, proxies de economia).
 - **Loop**: uma unidade de trabalho que melhora por feedback até um gate objetivo passar
   (`05-loop-engineering.md`).

@@ -8,6 +8,15 @@ Funciona em qualquer IA que leia markdown: Claude Code, Codex, Gemini, Grok, Kim
 ou a próxima que aparecer. O núcleo é texto puro; adapters dão tooling extra onde o
 harness suporta.
 
+## Recibo (por que acreditar)
+
+Auditoria de 60 dias sobre uso real (19 loops com state file, 7 projetos): 10+ bugs
+introduzidos pegos por checker ANTES de commit, 5 diagnósticos errados refutados por
+verificação adversarial, 8+ PRs de produção, e 3 loops que fecharam com ZERO diff porque
+a causa raiz não era código. Números, casos e limites: `docs/RECIBO-2026-08.md`.
+Regenere o seu: `node bootstrap/receipt.mjs <raiz-dos-projetos>`. Implementação sem uso
+não é recibo: o que ainda não tem execução registrada fica marcado experimental.
+
 ## Regra de ouro
 
 **Índice aponta, não contém.** Cada camada mora no próprio arquivo e carrega sob demanda.

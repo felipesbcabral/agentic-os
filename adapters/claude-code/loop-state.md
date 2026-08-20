@@ -24,6 +24,15 @@
 ## Last run
 (nenhuma ainda)
 
+## Custo (por iteração; sem esta série a métrica "custo por mudança aceita" não fecha)
+- iter <N>: modelo <nome> · tokens in/out <a>/<b> (cache <c>%) · <min> min
+
+## Checker (rastreabilidade: ver core/04)
+- id/modelo: <...> · contexto: <novo | fork, NÃO conta como independente | CHECKER_INDEPENDENTE_INDISPONIVEL>
+- hash do diff congelado: <...> · evidência: `./.loop/evidence/<slug>/`
+- achados: <cada um com INTRODUZIDO|PRÉ-EXISTENTE + atribuição checker_unique |
+  gate_redundant | human_seed_checker_confirmed | unknown>
+
 ## In progress
 - (nada)
 

@@ -160,10 +160,14 @@ Gate em tudo = você é o gargalo; gate em nada = ninguém olhando.
   custo e pergunte.
 
 ## Biblioteca (grafos salvos, re-runnáveis; LOCAL-ONLY, nunca versionar)
-Globais (`~/.claude/workflows/`): `adversarial-review`, `discovery-until-dry`,
-`kg-ingestion` (KG semântico de docs), `memory-consolidation` (dreaming), `dependency-waves`
-(planejador de ondas). Projetos podem ter overlay próprio em `<projeto>/.claude/workflows/`.
-Índice completo: `~/.claude/workflows/README.md`.
+Instalados por você em `~/.claude/workflows/`; projetos podem ter overlay próprio em
+`<projeto>/.claude/workflows/`. Os desenhos de referência (`adversarial-review`,
+`discovery-until-dry`, `kg-ingestion` KG semântico de docs, `memory-consolidation`
+dreaming, `dependency-waves` planejador de ondas) moram em
+`<repo agentic-os>/adapters/claude-code/workflows-experimental/` e ficam FORA da
+instalação padrão até cada um ter 1 execução registrada: copie o que for usar, rode, e
+promova depois com journal completo + resultado aceito. Implementação sem uso não é recibo.
+Pós-execução: confira o journal (retorno não-vazio; branch falha = null) antes de confiar.
 Ticket como prompt executável: comando `/ticket`.
 
 ## Fechamento (learning law)
