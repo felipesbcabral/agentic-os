@@ -16,6 +16,15 @@
 ## Feito
 - <iteração N: o que fechou, com prova>
 
+## Custo (por iteração; sem esta série a métrica "custo por mudança aceita" não fecha)
+- iter <N>: modelo <nome> · tokens in/out <a>/<b> (cache <c>%) · <min> min
+
+## Checker (rastreabilidade: ver core/04)
+- id/modelo: <...> · contexto: <novo | fork, NÃO conta como independente | CHECKER_INDEPENDENTE_INDISPONIVEL>
+- hash do diff congelado: <...>
+- achados: <cada um com INTRODUZIDO|PRÉ-EXISTENTE + atribuição
+  checker_unique | gate_redundant | human_seed_checker_confirmed | unknown>
+
 ## Em progresso / falta
 - <próximo menor passo>
 

@@ -1,13 +1,15 @@
 # 10. Model routing: qual modelo pra qual trabalho
 
-Princípio validado em benchmark público e em uso real: **o pensamento mora no
-PLANO/orquestrador, não no worker**. Modelo capaz no topo + workers baratos entrega
-~92-96% do resultado por ~46-63% do custo.
+Default: **um modelo forte num fluxo simples.** Roteamento por papel (advisor, executor,
+scout) é HIPÓTESE a medir no SEU domínio, não regra universal: os números públicos vêm de
+domínios distintos e não se transferem sozinhos.
 
-Os números de referência (benchmarks públicos da Anthropic, 2026): advisor pattern
-(executor barato consulta o caro ~1x/tarefa) = 92% do score a 63% do preço; orchestrator
-pattern (caro planeja, baratos executam) = 96% da performance a 46% do preço. Os modelos
-específicos mudam a cada 6 meses; o PADRÃO não.
+Referências (benchmarks públicos da Anthropic, 2026), cada uma válida SÓ no seu domínio:
+advisor pattern = 92% do score a 63% do preço (SWE-bench Pro); orchestrator pattern = 96%
+a 46% (BrowseComp, busca paralelizável). A mesma fonte mede multi-agente a ~15x os tokens
+de um chat e avisa: a maioria das tarefas de CÓDIGO divide pouco. Antes de adotar um papel
+como default, registre a série local (modelo, harness, % cache, qualidade, custo, aceite)
+e compare com o modelo forte sozinho. Sem série, fique no default.
 
 ## Os 3 papéis (independentes de fornecedor)
 

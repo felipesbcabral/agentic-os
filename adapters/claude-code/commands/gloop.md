@@ -40,9 +40,14 @@ Um slash command NÃO inicia outro (`/gloop` não dá boot literal no `/loop`). 
 Single-agent (acima) é o padrão. Quando a tarefa é GRANDE e decomponível (audit
 amplo, migração em N arquivos, "varrer tudo"), suba pra fleet via a **Workflow tool**.
 Conhecimento do craft: skill `graph-global`; protocolo: `/ggraph`. Antes de escrever
-script novo, cheque a biblioteca salva (`~/.claude/workflows/README.md`): `adversarial-review`
+script novo, cheque os desenhos de referência em
+`<repo agentic-os>/adapters/claude-code/workflows-experimental/`: `adversarial-review`
 (review por lentes + céticos), `discovery-until-dry` (varredura até secar), `dependency-waves`
-(planejar ondas de tickets), `kg-ingestion`, `memory-consolidation`.
+(planejar ondas de tickets), `kg-ingestion`, `memory-consolidation`. Eles NÃO vêm na
+instalação padrão (nenhum tem execução registrada ainda): copie o que for usar pra
+`~/.claude/workflows/` na hora, e depois de 1 run com journal completo e resultado aceito
+ele é promovido. Workflow concluído: confira o journal antes de confiar; journal parado em
+"started" = stall, relance com resume.
 - **Orchestrator** (o script do Workflow) decompõe o Goal em peças independentes.
 - **Specialists** = 1 agente por peça, cada um com SEU gate + zone-scan. Use
   `isolation: "worktree"` quando 2+ specialists editam em paralelo (evita colisão).
@@ -133,8 +138,14 @@ verificados e reuse-os toda volta.
    mais confiança que uma passada única do loop-reviewer.
    Deixe o checker AUDITÁVEL: registre no state a identidade dele, o hash do diff
    congelado, os achados e o veredito literal (texto longo vai pra
-   `./.loop/evidence/<slug>/`, o state referencia).
-8. **RECORD** atualize `./.loop/state-<slug>.md` (feito / falta / lições / stops).
+   `./.loop/evidence/<slug>/`, o state referencia). O checker nasce SEM o seu histórico
+   (cápsula: Goal, diff congelado, outputs do gate); fork do seu contexto não conta como
+   independente e o veredito então carrega `CHECKER_INDEPENDENTE_INDISPONIVEL`. Cada
+   achado leva atribuição: `checker_unique` | `gate_redundant` |
+   `human_seed_checker_confirmed` | `unknown`.
+8. **RECORD** atualize `./.loop/state-<slug>.md` (feito / falta / custo com modelo e
+   tokens da iteração / checker / lições / stops). Sem a série de custo, o recibo
+   (`bootstrap/receipt.mjs`) não fecha a métrica de custo por mudança aceita.
 9. **DECIDE** gate verde + Goal atingido -> HARD-STOP (sucesso). Senão próxima iteração.
    Tarefa nascida de ticket/chamado: só encerra com rascunho de resposta ao solicitante
    no state (SEM enviar), dizendo o que foi confirmado, o que não dá pra afirmar e o que

@@ -12,11 +12,11 @@ genérica ganha arquivo aqui; lição específica de projeto fica na memória do
 
 - `gate-design.md`: invariante em prosa vira assertion mecânica
 - `false-green.md`: o gate pode mentir (árvore errada, RED que passa)
-- `cli-empty-output.md`: saída vazia não prova ausência
 - `caps-before-fanout.md`: fleet/loop sem teto queima 5-10x
 - `checker-independence.md`: maker != checker e drive-by fixes
 - `freshness-before-work.md`: árvore stale, branch alvo e produção são 3 versões
-- `transport-before-product.md`: encoding/pipe/locale fabricam bugs falsos
+- `transport-before-product.md`: encoding/pipe/locale fabricam bugs falsos; saída vazia
+  não prova ausência (fusão de `cli-empty-output`, 2026-08)
 - `external-messages.md`: só prometer escopo implementado
 - `secrets-hygiene.md`: mascarar por NOME de chave; nunca pular verificação de hook
 - `parallel-workspaces.md`: 1 writer por arquivo; artefato de sessão no workspace isolado
